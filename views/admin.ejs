@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- include header -->
+     <%- include('include/_header')%>
+     <!-- /include header -->
+    <title>Admin Panel</title>
+</head>
+<body style="background-color: #d8e3e7;">
+    <!-- include admin navbar -->
+    <nav class="navbar navbar-dark bg-danger justify-content-between">
+        <a class="navbar-brand text-light Roboto">Crazy Food</a>
+       <form class="form-inline">
+            <a href="/admin/add" class="btn btn-outline-light my-2 my-sm-0 mr-5">Add Recipe</a>
+        </form>
+    </nav>
+    <!-- include admin navbar -->
+    <section id="menu-list">
+        <div class=" container-menu py-5">
+            <!-- heading -->
+            <div class="text-center py-2">
+                <span class="text-danger h1 pacifico">Menu</span>
+            </div>
+            <!-- heading -->
+            <!-- back to previous page button -->
+            <a href="/" class=""><button class="btn btn-danger px-3 mb-3"><i
+                        class="fas fa-home "></i>&nbsp;Home</button></a>
+            <!-- back to previous page button -->
+            <div id="filters" class="button-group  ">
+                <button class="btn is-checked Active" data-filter="*">All Brand</button>
+                <button class="btn " data-filter=".Breakfast">Breakfast</button>
+                <button class="btn" data-filter=".Lunch">Lunch</button>
+                <button class="btn" data-filter=".Dinner">Dinner</button>
+                <button class="btn" data-filter=".Meal">Meal</button>
+                <button class="btn" data-filter=".Chicken">Chicken</button>
+                <button class="btn" data-filter=".VegDishes">Veg Dishes</button>
+                <button class="btn" data-filter=".SweetDishes">Sweet Dishes</button>
+            </div>
+            
+
+            <div class="grid row ">
+                <% Recipes.forEach(recipe=>{%>
+                <div class="grid-item mix card-group  mr-3 mt-3  <%= recipe.type %>">
+                    <div class="card <%= recipe.mode %>" style="width: 15rem;">
+                        <img class="card-img-top" src="/img/upload/<%= recipe.photo %>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= recipe.title %></h5>
+                            <p class="card-text"><%= recipe.description.substring(0,50) %>.....</p>
+                            <div class="text-center" id="admin_button">
+                                <a href="/admin/post/<%= recipe._id %>"><button class="btn btn-warning add_form"><i class="fa fa-eye "></i></button></a>
+                                <a href="/admin/edit/<%= recipe._id%>"><button class="btn btn-success "><i class="fa fa-edit"></i></button></a>
+                                <a href="/admin/delete/<%= recipe._id %>"><button class="btn btn-danger "><i class="far fa-trash-alt"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+        </div>
+    </section>
+    
+    <!-- main body -->
+    
+     <!-- include script -->
+     <%- include('include/_script')%>
+     <!-- /include script -->
+
+</body>
+</html>

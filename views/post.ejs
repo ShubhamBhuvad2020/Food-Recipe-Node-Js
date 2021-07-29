@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- include header -->
+    <%- include('include/_header')%>
+    <!-- /include header -->
+    
+        <title><%=post.title%></title>
+</head>
+<body>
+    <!-- include navbar -->
+    <%- include('include/_navbar')%>
+    <!-- /include navbar -->
+    <!-- post -->
+    <section id="post">
+        <div class="container py-5">
+            <!-- picture and short info -->
+            <div class="row">
+
+                <div class="col-lg-7 col-sm-12">
+                    <img src="/img/upload/<%= post.photo %>" alt="<%= post.title %>" class="img-fluid rounded " style="width: 38rem;height:27rem;">
+                </div>
+                <div class="col-lg-5 col-sm-12 pt-4 ">
+                    <!-- title -->
+                    <h2><%=post.title %></h2>
+                    <!-- title -->
+                    <!-- list of icons -->
+                    <div class="d-flex flex-column bd-highlight mb-3">
+                        <div class="p-2 bd-highlight "><i class="  p-1 fa-lg far fa-clock "></i><span class="ml-2"><b
+                                    class="">Prep:</b>&nbsp;<%=post.prep_time %></span></div>
+                        <div class="p-2 bd-highlight "><i class="  p-1 fa-lg fas fa-clock"></i><span class="ml-2"><b
+                                    class="">Cook:</b>&nbsp;<%=post.cook_time %></span></div>
+                        <div class="p-2 bd-highlight "><i class="  p-1 fa-lg fas fa-hard-hat"></i><span class="ml-2"><b
+                                    class=""><%= post.mode %></b></span></div>
+                        <div class="p-2 bd-highlight "><i class="  p-1 fa-lg fas fa-utensils"></i><span class="ml-2"><b
+                                    class="">Serves:</b>&nbsp;<%=post.serves %></span></div>
+                    </div>
+                    <!-- list of icons -->
+                    <!-- description -->
+                    <div class="text-dark h5 py-3">
+                        <%= post.description %>
+                    </div>
+                    <!-- description -->
+                    <div class="text-left">
+                        <div class="d-flex flex-row pt-2">
+                            <img src="/img/profile-user.png" class="img-fluid" alt="User-Profile-Picture"
+                                style="width: 2rem; height: 2rem;">
+                            <span class="pt-2 pl-2 text-dark h6"> <%= post.cook_name %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- picture and short info -->
+            <hr class="w-100 bg-secondary mt-5">
+
+            <!-- ingredient and method -->
+            <div class="row py-4 ">
+                <div class="col-lg-4  border-right border-dark">
+                    <!-- <hr class="w-100"> -->
+                    <div class="text-center text-black h4"><h3><u class="pb-2">Ingredient</u></h3></div>
+                    <%- post.ingredient %>                         
+                </div>
+                <div class="col-lg-5">
+                    <!-- <hr class="w-100"> -->
+                    <div class="text-center text-black h4"><h3><u>Method</u></h3></div>
+                    <%- post.method %>
+                </div>
+                <div class="col-lg-3">
+                <!-- relative video  -->
+            
+                <div ><h3 class="text-black">Relative Videos</h3></div>
+                <hr class="w-100 bg-dark mt-0">
+                
+                <%if (post.link){%>
+                    <div class="d-flex justify-content-between">
+                        <iframe src="<%= post.link %>" class="ml-4" width="350" height="200" ></iframe>
+                    </div>                 
+                <%}else{%>
+                        <h4 class="text-secondary h6"> Video Not Available</h4>
+                <%}%>
+           
+            <!-- !relative video  -->
+                </div>
+            </div>
+            <!-- !ingredient and method -->
+            <hr>
+            <!-- comment-box -->
+            <div class="container">
+                <div class="row bootstrap snippets bootdeys">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="comment-wrapper">
+                            <div class="panel panel-info">
+                                <div class="panel-heading ">
+                                    <span class="text-dark "><b>Leave Comment</b></span>
+                                </div>
+                                <div class="panel-body">
+                                    <form method="POST"  action="/comment">
+                                        <input type="hidden" name="post_id" value="<%=post._id%>">
+                                        <div class="form-group py-2">
+                                          <input type="text" name="username" class="form-control" placeholder="Enter Your Name...">
+                                        </div>
+                                        <div class="form-group">
+                                          <textarea name="comment"  class="form-control" placeholder="write a comment.."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger">Post</button>
+                                      </form>
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                    <ul class="media-list">
+                                        <% post.comment.forEach(comment =>{ %>
+
+                                        <li class="media">
+                                            <a href="#" class="pull-left">
+                                                <img src="/img/profile-user.png" style="height: 40px ; width: 40px;" alt="" class="rounded-circle img-fluid">
+                                            </a>
+                                            <div class="media-body pl-2">
+                                                
+                                                <strong class="text-success">@<%= comment.username %></strong>
+                                                <p>
+                                                    <%= comment.comment %>
+                                                </p>
+                                            </div>
+                                            <span class="text-muted pull-right"> 
+                                                    <small class="text-muted"><%= comment.timeCreated.toLocaleDateString() %></small>
+                                            </span>
+                                        </li>
+                                        <%}) %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
+            <!-- comment-box -->
+            <!-- <script>
+                function doComment(form){
+                    $ajax({
+                        url:"/comment",
+                        method:"POST",
+                        data:{username:form.username.value,comment:form.comment.value,post_id:form.post_id.value},
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
+                    return false;
+                }
+            </script> -->
+        <!-- </div> -->
+    </section>
+
+    <!-- include footer -->
+    <%- include('include/_footer')%>
+    <!-- /include footer -->
+    <!-- include script -->
+    <%- include('include/_script')%>
+    <!-- /include script -->
+</body>
+</html>
+
+
+
+
+
+

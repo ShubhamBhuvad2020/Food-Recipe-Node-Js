@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+/* typograpy css */
+.Comic{
+    font-family: 'Comic Neue', cursive;
+}
+.Roboto{
+    font-family: 'Roboto', sans-serif;
+}
+.Source{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.pacifico{
+    font-family: 'Pacifico', cursive; 
+}
+.font-size-14{
+    font-size: 14px;
+}
+.font-size-16{
+    font-size: 16px;
+}
+.font-size-18{
+    font-size: 18px;
+}
+.font-size-20{
+    font-size: 20px;
+}
+/* navbar css */
+#navbar .nav-item:hover{
+    border-bottom: 1px solid whitesmoke;
+    
+}
+/* banner area css*/
+#banner-area .owl-carousel img{
+    height: 80vh;
+}
+#about-us{
+    height: 60vh;
+}
+/* about-us css */
+#about-us .about-us-card{
+    margin-left:20%!important;
+
+}
+/* our-chef css */
+#our-chef img {
+    height: 40vh;
+    width: 20vw;
+    background-clip: border-box;
+    background-size: 100px 100px;
+}
+#our-chef .container{
+    width: 60vw!important;
+}
+/* gallary css */
+#gallery .container {
+    /* width: 1170px; */
+    margin: 0 auto;
+  }
+  
+  #gallery {
+    border: 1px solid #efefef;
+    padding: 4px 0 0 0;
+  }
+  
+  #gallery img {
+    margin: 8px;
+    width: 214px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  #gallery img:hover {
+    margin: 8px;
+    opacity: .8;
+  }
+  
+  header h1 {
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  
+  #buttons button {
+    border: 1px solid #dc3545;
+    margin-right: 8px;
+    border: 0;
+    padding: 8px;
+    border-radius: 3px;
+  }
+  
+  #buttons button.active {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  #buttons {
+    margin: 8px;
+    padding-bottom: 8px;
+  }
+  button:hover{
+    background-color: #dc3545;
+    color: #fff;
+  }
+  /* menu button color */
+  .btn-gradient-color:hover{
+    background-color: linear-gradient(to right top, #ffffff, #ecd7f0, #ebabce, #ea7c96, #d9534f);
+  }
+ /* container-menu */
+ .container-menu{
+   margin-left:4%;
+ }
+ .Active{
+   background-color: #dc3545;
+   color: #efefef;
+ }
+ 
+.comment-wrapper .panel-body {
+  max-height:650px;
+  overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+  width:64px;
+  height:64px;
+  border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+  border-bottom:1px dashed #efefef;
+  margin-bottom:25px;
+}
+
+/* admin login form */
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
